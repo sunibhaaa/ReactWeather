@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #dff3ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: 430px;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.container>h1 {
+  color: #4aa9df;
+  font-size: 27px;
+  margin-bottom: 20px;
+  padding: 25px;
+  border-bottom: 1px solid #ddd;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  padding: 25px;
+  border-bottom: 1px solid #ddd;
+}
+
+form input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  outline: none;
+  font-size: 15px;
+}
+
+form input:focus {
+  border-color: #55b6e8;
+}
+
+form button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 7px;
+  background: #55b6e8;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #3b9fd3;
+}
+
+.weather-card {
+  text-align: center;
+  padding: 35px 20px 0;
+}
+
+.weather-card h2 {
+  font-size: 17px;
+  font-weight: normal;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.weather-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.weather-card h1 {
+  font-size: 70px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.weather-card>p {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.weather-card>p:first-of-type {
+  font-size: 21px;
+  color: #222;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.weather-details {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.detail-box {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 10px;
+}
+
+.detail-box:first-child {
+  border-right: 1px solid #ddd;
+}
+
+.detail-box img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.detail-box div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.detail-box span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+.detail-box small {
+  font-size: 13px;
+  color: #555;
+  margin-top: 3px;
+}
+
+.error-message {
+  padding: 15px 25px;
+  color: #d33;
+  text-align: center;
+}
+
+.container>p {
+  text-align: center;
+  padding: 15px;
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  .weather-card h1 {
+    font-size: 58px;
+  }
+
+  .weather-image {
+    width: 150px;
+    height: 150px;
+  }
+}
