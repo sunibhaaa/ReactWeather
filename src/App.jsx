@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useWeather } from "./hooks/useWeather";
 import WeatherCard from "./components/WeatherCard";
 import "./App.css";
@@ -8,22 +9,22 @@ function App() {
   const [city, setCity] = useState("");
 
   const {
-    weather,
-    loading,
-    error,
-    getWeather
-  } = useWeather();
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
 
 
-  function handleSubmit(event) {
+  const {
+    data,
+    isLoading,
+    isError
+  } = useWeather(city);
 
-    event.preventDefault();
 
-    if (city.trim() === "") {
-      return;
-    }
+  function onSubmit(formData) {
 
-    getWeather(city);
+    setCity(formData.city);
 
   }
 
@@ -33,13 +34,14 @@ function App() {
 
       <h1>Weather App</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
 
         <input
           type="text"
           placeholder="Enter city name"
-          value={city}
-          onChange={(event) => setCity(event.target.value)}
+          {...register("city", {
+            required: "Please enter a city."
+          })}
         />
 
         <button type="submit">
@@ -49,21 +51,28 @@ function App() {
       </form>
 
 
-      {loading && (
-        <p>Loading...</p>
-      )}
-
-
-      {error && (
+      {errors.city && (
         <p className="error-message">
-          {error}
+          {errors.city.message}
         </p>
       )}
 
 
-      {weather && (
+      {isLoading && (
+        <p>Loading...</p>
+      )}
+
+
+      {isError && (
+        <p className="error-message">
+          City not found. Please enter a valid city.
+        </p>
+      )}
+
+
+      {data && !isError && (
         <WeatherCard
-          weather={weather}
+          weather={data}
         />
       )}
 
